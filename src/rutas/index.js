@@ -11,8 +11,21 @@ const bcrypt = require ('bcrypt');
 
 // ahora damos iniciio a la sesion
 archivo.get('/', (req,res, next)=>{
-    res.render('IniciarSesion');
+    res.render('inicio');
 })
+
+//ahora vamos a obtener el formulario
+//midware => capa intermedia de comunicacion, si hay un req debe haber un res
+archivo.get('/inicio', (require, response, next) => {
+    response.render('inicio')
+});
+
+
+//ahora vamos a obtener el formulario
+//midware => capa intermedia de comunicacion, si hay un req debe haber un res
+archivo.get('/IniciarSesion', (require, response, next) => {
+    response.render('IniciarSesion')
+});
 
 //ahora vamos a obtener el formulario
 //midware => capa intermedia de comunicacion, si hay un req debe haber un res
