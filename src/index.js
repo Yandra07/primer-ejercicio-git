@@ -26,7 +26,7 @@ puerto.set('escuchando', 31);
 
 //ahora vamos a usar el puerto
 puerto.listen(puerto.get('escuchando'), () => {
-    console.log('el servidor escucha por el puerto--- y se realiza la prueba para el git -- segundo comentario ---- tercer comenteario : ', puerto.get('escuchando'))
+    console.log('el servidor escucha por el puerto-- y se realiza la prueba para el git -- segundo comentario ---- tercer comenteario : ', puerto.get('escuchando'))
 });
 
 puerto.use(express.json());
