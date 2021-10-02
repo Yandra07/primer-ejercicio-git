@@ -16,9 +16,9 @@ archivo.get('/', (req,res, next)=>{
 
 //ahora vamos a obtener el formulario
 //midware => capa intermedia de comunicacion, si hay un req debe haber un res
-archivo.get('/inicio', (require, response, next) => {
-    response.render('inicio')
-});
+//archivo.get('/inicio', (require, response, next) => {
+//    response.render('inicio')
+//});
 
 
 //ahora vamos a obtener el formulario
@@ -84,9 +84,9 @@ archivo.post('/IniciarSesion', async(req, res) =>{
             if (error){
                 throw error //Desición
             }else if (!isMatch){
-                res.send("La contraseña no es correcta")
+                res.send("La contraseña no es correcta--- y se realiza la prueba para el git")
             }else {
-                res.send("Usted es un usuario autorizado, pero la pagina esta en construcción")
+                res.render('HOME')
             }
 
         })
