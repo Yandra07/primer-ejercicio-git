@@ -84,7 +84,7 @@ archivo.post('/IniciarSesion', async(req, res) =>{
             if (error){
                 throw error //Desición
             }else if (!isMatch){
-                res.send("La contraseña no es correcta--- y se realiza la prueba para el git")
+                res.send("La contraseña no es correcta")
             }else {
                 res.render('HOME')
             }
