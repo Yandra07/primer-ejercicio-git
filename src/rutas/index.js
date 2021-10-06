@@ -7,10 +7,13 @@ const archivo = express.Router();
 const passport = require('passport');
 
 const User = require('../modelado/registro');
-const bcrypt = require ('bcrypt');
+
+const Registro = require('../modelado/Crear_Usuarios');
+
+const bcrypt = require('bcrypt');
 
 // ahora damos iniciio a la sesion
-archivo.get('/', (req,res, next)=>{
+archivo.get('/', (req, res, next) => {
     res.render('inicio');
 })
 
@@ -33,69 +36,93 @@ archivo.get('/formulario', (require, response, next) => {
     response.render('formulario')
 });
 
+archivo.get('/crear-usuario', (require, response, next) => {
+    response.render('Crear_Usuarios')
+});
 
 // Se guardan los datos asincronicamente
 // se declara la funcion
 
-archivo.post('/formulario', async(req, res) => {
+archivo.post('/formulario', async (req, res) => {
 
-    const {usuario, clave, date} = req.body;
+    const { usuario, clave, date } = req.body;
 
     //aqui vamos a validar que el email no exista
 
-    const E = await User.findOne({usuario});
+    const E = await User.findOne({ usuario });
 
-    if (E){res.send('el email ya existe');}
+    if (E) { res.send('el email ya existe'); }
 
-    else{
+    else {
 
-        const nuevoU = new User({usuario, clave, date});
+        const nuevoU = new User({ usuario, clave, date });
 
-    await  nuevoU.save();
+        await nuevoU.save();
 
-    res.send ('el documento se guardo satisfactoriamente');
+        res.send('el documento se guardo satisfactoriamente');
 
     }
 
 })
 
 archivo.post('/formulario', async (req, res) => {
-   const { usuario, clave, fecha_ingreso } = req.body;
-   const nuevoU = new User({ usuario, clave, fecha_ingreso });
-   await nuevoU.save();
+    const { usuario, clave, fecha_ingreso } = req.body;
+    const nuevoU = new User({ usuario, clave, fecha_ingreso });
+    await nuevoU.save();
     res.send('Se guardaron los datos correctamente');
 });
 
 // se implementa el post del inicio de sesion
-archivo.post('/IniciarSesion', async(req, res) =>{
+archivo.post('/IniciarSesion', async (req, res) => {
     //cuando el usuario ingrese al sistema debe escribir la clave normal
     const { usuario, clave, fecha_ingreso } = req.body;
 
-    const user = await User.findOne({usuario});
+    const user = await User.findOne({ usuario });
 
-    if (User){
+    if (User) {
         // vamos a verificar el password
-        var contraseña = req.body.clave; 
+        var contraseña = req.body.clave;
 
         // p= la clave encriptada y req body es el modelado 
         var p = user.clave
 
-        bcrypt.compare(contraseña,p, function(error, isMatch){
-            if (error){
+        bcrypt.compare(contraseña, p, function (error, isMatch) {
+            if (error) {
                 throw error //Desición
-            }else if (!isMatch){
+            } else if (!isMatch) {
                 res.send("La contraseña no es correcta")
-            }else {
+            } else {
                 res.render('HOME')
             }
 
         })
-     }else {
-         res.render('formulario');
-     }
+    } else {
+        res.render('formulario');
+    }
 
 })
 
+archivo.post('/crear-usuario', async (req, res) => {
+    //cuando el usuario ingrese al sistema debe escribir la clave normal
+    const { Nombre, Cedula, Telefono, Email } = req.body;
+
+    const nuevoUduarioBaseDatos = await Registro.findOne({Cedula});
+    console.log("usuarioDB", nuevoUduarioBaseDatos);
+    if (nuevoUduarioBaseDatos) {
+        res.send('Ya existe un usario con esta cedula');
+    }
+
+    else {
+
+        const nuevoRdegistro = new Registro({ Nombre, Cedula, Telefono, Email });
+
+        await nuevoRdegistro.save();
+
+        res.send('Registro creado con éxito');
+
+    }
+
+})
 
 // vamos a exportar este programa index para que otros lo puedan usar
 module.exports = archivo;
