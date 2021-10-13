@@ -31,7 +31,7 @@ puerto.listen(puerto.get('escuchando'), () => {
 
 puerto.use(express.json());
 puerto.use(bodyParser.json());
-puerto.use(bodyParser.urlencoded({ extend: true }));
+puerto.use(bodyParser.urlencoded({ extended: true }));
 
 //Se configuran las views 
 puerto.set('views', path.join(__dirname, 'vistas'));
