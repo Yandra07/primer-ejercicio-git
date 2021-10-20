@@ -12,6 +12,8 @@ const Registro = require('../modelado/Crear_Usuarios');
 
 const bcrypt = require('bcrypt');
 
+//const mostrar = require('Ver_Usuario');
+
 // ahora damos iniciio a la sesion
 archivo.get('/', (req, res, next) => {
     res.render('inicio');
@@ -38,6 +40,12 @@ archivo.get('/formulario', (require, response, next) => {
 
 archivo.get('/crear-usuario', (require, response, next) => {
     response.render('Crear_Usuarios')
+});
+
+archivo.get('/mostrar-usuarios', async (require, response, next) => {
+    const Usuarios = await Registro.find().lean();
+    console.log(Usuarios[0]);
+    response.render('Ver_Usuario', {Usuarios: Usuarios})
 });
 
 // Se guardan los datos asincronicamente

@@ -41,53 +41,56 @@
 <body id="page-top">
     <div class="container">
         <!-- Content here -->
-         <header class="text-center">
-        <div class="container" style="background-color: #FF7777!important;">
-            <h1 class="masthead-heading text-uppercase text-white mb-0">Yandra Yised Roa Leiva</h1>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+        <header class="text-center">
+            <div class="container" style="background-color: #FF7777!important;">
+                <h1 class="masthead-heading text-uppercase text-white mb-0">Yandra Yised Roa Leiva</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Estudiante de desarrollo - UCC</p>
+                <br>
             </div>
-            <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Estudiante de desarrollo - UCC</p>
-            <br>
-        </div>
-    </header>
-    <br>
-    <!-- Portfolio Section-->
-    <section class="page-section portfolio" id="portfolio">
-        <div class="container">
-            <!-- Portfolio Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Innovación</h2>
-            <!-- Icon Divider-->
-            <br>
-        <form action="/crear-usuario" method="post">
-            <h1>Formulario de registro de personas</h1>
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="Nombre" placeholder="Yandra Roa">
-            </div>
-            <div class="mb-3">
-                <label for="cedula" class="form-label">Cedula</label>
-                <input type="text" class="form-control" id="cedula" name="Cedula" placeholder="1031122888">
-            </div>
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Télefono</label>
-                <input type="phon" class="form-control" id="telefono" name="Telefono" placeholder="3102272898">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Correo electronico</label>
-                <input type="email" class="form-control" id="email" name="Email" placeholder="name@example.com">
-            </div>
-            <button type="submit" class="btn btn-secondary">Enviar</button>
+        </header>
+        <br>
+        <!-- Portfolio Section-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Innovación</h2>
+                <!-- Icon Divider-->
+                <br>
+                <br>
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">cedula</th>
+                            <th scope="col">nombre</th>
+                            <th scope="col">telefono</th>
+                            <th scope="col">Correo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each Usuarios  as |usuario index|}}
+                        <tr>
+                            <td scope="row">{{index}}</td>
+                            <td>{{usuario.Cedula}}</td>
+                            <td>{{usuario.Nombre}}</td>
+                            <td>{{usuario.Telefono}}</td>
+                            <td>{{usuario.Email}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
 
-        </form>
 
-    </div>
-
-
+            </div>
+            
 </body>
 
 </html>
