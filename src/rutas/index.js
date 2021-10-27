@@ -20,6 +20,11 @@ archivo.get('/', (req, res, next) => {
     res.render('inicio');
 })
 
+// ahora damos iniciio a la sesion
+archivo.get('/home', (req, res, next) => {
+    res.render('HOME');
+})
+
 //ahora vamos a obtener el formulario
 //midware => capa intermedia de comunicacion, si hay un req debe haber un res
 //archivo.get('/inicio', (require, response, next) => {
@@ -51,6 +56,11 @@ archivo.get('/mostrar-usuarios', async (require, response, next) => {
 archivo.get('/mostrar-editar-usuarios', async (require, response, next) => {
     const Usuarios = await Registro.find().lean();
     response.render('Ver_Editar_Usuarios', { Usuarios: Usuarios })
+});
+
+archivo.get('/mostrar-eliminar-usuarios', async (require, response, next) => {
+    const Usuarios = await Registro.find().lean();
+    response.render('Ver_Eliminar_Usuarios', { Usuarios: Usuarios })
 });
 
 archivo.get('/update', async (req, response) => {
@@ -152,9 +162,12 @@ archivo.post('/update', async (req, response) => {
         Telefono: req.body.Telefono,
         Email: req.body.Email,
     });
-    console.log('clv', thing);
     const update = await Registro.updateOne({ _id: req.body._id }, thing);
-    console.log('Registro', update);
+    response.redirect('/mostrar-editar-usuarios');
+});
+
+archivo.get('/delete', async (req, response) => {
+    const update = await Registro.findOneAndDelete({ _id: req.query._id });
     response.redirect('/mostrar-editar-usuarios');
 });
 

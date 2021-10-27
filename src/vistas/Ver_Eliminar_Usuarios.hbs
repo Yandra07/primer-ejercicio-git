@@ -63,36 +63,39 @@
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Innovación</h2>
                 <!-- Icon Divider-->
                 <br>
-                <form action="/crear-usuario" method="post">
-                    <h1>Formulario de registro de personas</h1>
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="Nombre" placeholder="Yandra Roa">
-                    </div>
-                    <div class="mb-3">
-                        <label for="cedula" class="form-label">Cedula</label>
-                        <input type="text" class="form-control" id="cedula" name="Cedula" placeholder="1031122888">
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefono" class="form-label">Télefono</label>
-                        <input type="phon" class="form-control" id="telefono" name="Telefono" placeholder="3102272898">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Correo electronico</label>
-                        <input type="email" class="form-control" id="email" name="Email" placeholder="name@example.com">
-                    </div>
-                    <button type="submit" class="btn btn-secondary">Enviar</button>
-                    <div class="btn btn-outline-info">
-                        <a href="/home">
-                            <p>Inicio</p>
-                        </a>
-                    </div>
+                <br>
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">cedula</th>
+                            <th scope="col">nombre</th>
+                            <th scope="col">telefono</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each Usuarios as |usuario index|}}
+                        <tr>
+                            <td scope="row">{{index}}</td>
+                            <td>{{usuario.Cedula}}</td>
+                            <td>{{usuario.Nombre}}</td>
+                            <td>{{usuario.Telefono}}</td>
+                            <td>{{usuario.Email}}</td>
+                            <td> <a href="delete?_id={{usuario._id}}"> Eliminar </a></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
 
-
-                </form>
-
+                <div class="btn btn-outline-info">
+                    <a href="/home">
+                        <p>Inicio</p>
+                    </a>
+                </div>
             </div>
-
 
 </body>
 

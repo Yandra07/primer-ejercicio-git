@@ -76,7 +76,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each Usuarios  as |usuario index|}}
+                        {{#each Usuarios as |usuario index|}}
                         <tr>
                             <td scope="row">{{index}}</td>
                             <td>{{usuario.Cedula}}</td>
@@ -88,9 +88,15 @@
                     </tbody>
                 </table>
 
+                <div class="btn btn-outline-info">
+                    <a href="/home">
+                        <p>Inicio</p>
+                    </a>
+                </div>
+
 
             </div>
-            
+
 </body>
 
 </html>
