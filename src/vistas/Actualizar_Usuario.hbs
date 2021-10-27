@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Freelancer - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <br>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Freelancer - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body id="page-top">
+    <div class="container">
+        <!-- Content here -->
+        <header class="text-center">
+            <div class="container" style="background-color: #FF7777!important;">
+                <h1 class="masthead-heading text-uppercase text-white mb-0">Yandra Yised Roa Leiva</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Estudiante de desarrollo - UCC</p>
+                <br>
+            </div>
+        </header>
+        <br>
+        <!-- Portfolio Section-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Innovación</h2>
+                <!-- Icon Divider-->
+                <br>
+                <form action="/update" method="post">
+                    <input type="hidden" name="_id" value="{{Usuario._id}}" />
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="Nombre" placeholder="Yandra Roa"
+                            value="{{Usuario.Nombre}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cedula" class="form-label">Cedula</label>
+                        <input type="text" class="form-control" id="cedula" name="Cedula" placeholder="1031122888"
+                            value="{{Usuario.Cedula}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Télefono</label>
+                        <input type="phon" class="form-control" id="telefono" name="Telefono" placeholder="3102272898"
+                            value="{{Usuario.Telefono}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo electronico</label>
+                        <input type="email" class="form-control" id="email" name="Email" placeholder="name@example.com"
+                            value="{{Usuario.Email}}">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Actualizar</button>
+                </form>
+            </div>
+</body>
+
+</html>

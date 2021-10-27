@@ -11,6 +11,7 @@ const User = require('../modelado/registro');
 const Registro = require('../modelado/Crear_Usuarios');
 
 const bcrypt = require('bcrypt');
+const { updateOne } = require("../modelado/registro");
 
 //const mostrar = require('Ver_Usuario');
 
@@ -44,8 +45,19 @@ archivo.get('/crear-usuario', (require, response, next) => {
 
 archivo.get('/mostrar-usuarios', async (require, response, next) => {
     const Usuarios = await Registro.find().lean();
-    console.log(Usuarios[0]);
-    response.render('Ver_Usuario', {Usuarios: Usuarios})
+    response.render('Ver_Usuario', { Usuarios: Usuarios })
+});
+
+archivo.get('/mostrar-editar-usuarios', async (require, response, next) => {
+    const Usuarios = await Registro.find().lean();
+    response.render('Ver_Editar_Usuarios', { Usuarios: Usuarios })
+});
+
+archivo.get('/update', async (req, response) => {
+    const { Nombre, Cedula, Telefono, Email } = req.query;
+    const Usuario = await Registro.findOne({ Cedula }).lean();
+    console.log('Registro buscado', Usuario);
+    response.render('Actualizar_Usuario', { Usuario: Usuario })
 });
 
 // Se guardan los datos asincronicamente
@@ -114,7 +126,7 @@ archivo.post('/crear-usuario', async (req, res) => {
     //cuando el usuario ingrese al sistema debe escribir la clave normal
     const { Nombre, Cedula, Telefono, Email } = req.body;
 
-    const nuevoUduarioBaseDatos = await Registro.findOne({Cedula});
+    const nuevoUduarioBaseDatos = await Registro.findOne({ Cedula });
     console.log("usuarioDB", nuevoUduarioBaseDatos);
     if (nuevoUduarioBaseDatos) {
         res.send('Ya existe un usario con esta cedula');
@@ -131,6 +143,20 @@ archivo.post('/crear-usuario', async (req, res) => {
     }
 
 })
+
+archivo.post('/update', async (req, response) => {
+    const thing = new Registro({
+        _id: req.body._id,
+        Nombre: req.body.Nombre,
+        Cedula: req.body.Cedula,
+        Telefono: req.body.Telefono,
+        Email: req.body.Email,
+    });
+    console.log('clv', thing);
+    const update = await Registro.updateOne({ _id: req.body._id }, thing);
+    console.log('Registro', update);
+    response.redirect('/mostrar-editar-usuarios');
+});
 
 // vamos a exportar este programa index para que otros lo puedan usar
 module.exports = archivo;
