@@ -64,7 +64,7 @@ archivo.get('/mostrar-eliminar-usuarios', async (require, response, next) => {
 });
 
 archivo.get('/update', async (req, response) => {
-    const { Nombre, Cedula, Telefono, Email } = req.query;
+    const { Nombre, id, Cedula, Telefono, Email,actividad,fecha } = req.query;
     const Usuario = await Registro.findOne({ Cedula }).lean();
     console.log('Registro buscado', Usuario);
     response.render('Actualizar_Usuario', { Usuario: Usuario })
@@ -134,7 +134,7 @@ archivo.post('/IniciarSesion', async (req, res) => {
 
 archivo.post('/crear-usuario', async (req, res) => {
     //cuando el usuario ingrese al sistema debe escribir la clave normal
-    const { Nombre, Cedula, Telefono, Email } = req.body;
+    const { Nombre, id, Cedula, Telefono, Email,actividad,fecha } = req.body;
 
     const nuevoUduarioBaseDatos = await Registro.findOne({ Cedula });
     console.log("usuarioDB", nuevoUduarioBaseDatos);
@@ -144,7 +144,7 @@ archivo.post('/crear-usuario', async (req, res) => {
 
     else {
 
-        const nuevoRdegistro = new Registro({ Nombre, Cedula, Telefono, Email });
+        const nuevoRdegistro = new Registro({ Nombre, id,Cedula, Telefono, Email,actividad,fecha });
 
         await nuevoRdegistro.save();
 
@@ -159,8 +159,11 @@ archivo.post('/update', async (req, response) => {
         _id: req.body._id,
         Nombre: req.body.Nombre,
         Cedula: req.body.Cedula,
+        id: req.body.id,
         Telefono: req.body.Telefono,
         Email: req.body.Email,
+        actividad: req.body.actividad,
+        fecha: req.body.fecha,
     });
     const update = await Registro.updateOne({ _id: req.body._id }, thing);
     response.redirect('/mostrar-editar-usuarios');

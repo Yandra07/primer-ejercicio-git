@@ -7,8 +7,11 @@ const { Schema } = mongoose;
 const actualizaciondedato = new Schema({
     Nombre: { type: String, required: true },
     Cedula: { type: String, required: true },
+    id:{ type: String, required: true },
     Telefono: { type: String, require: true },
     Email: { type: String, required: true },
+    actividad: { type: String, required: true },
+    fecha: { type: Date, required: true },
 });
 
 /*function myFunction() {

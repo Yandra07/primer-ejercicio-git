@@ -42,8 +42,8 @@
     <div class="container">
         <!-- Content here -->
         <header class="text-center">
-            <div class="container" style="background-color: #FF7777!important;">
-                <h1 class="masthead-heading text-uppercase text-white mb-0">Yandra Yised Roa Leiva</h1>
+            <div class="container" style="background-color: #77f8ff!important;">
+                <h1 class="masthead-heading text-uppercase text-white mb-0">REGISTRO Y CONTROL DE ACCESO A LOS AUDITORIOS UCC BOGOTÁ</h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -51,7 +51,7 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Estudiante de desarrollo - UCC</p>
+                <p class="masthead-subheading font-weight-light mb-0">Estudiantes de Tecnología en Desarrollo y Administración de Aplicaciones Informaticas - UCC</p>
                 <br>
             </div>
         </header>
@@ -60,7 +60,7 @@
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Innovación</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Bienvenidos</h2>
                 <!-- Icon Divider-->
                 <br>
                 <br>
@@ -70,9 +70,12 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">cedula</th>
+                            <th scope="col">id</th>
                             <th scope="col">nombre</th>
                             <th scope="col">telefono</th>
                             <th scope="col">Correo</th>
+                            <th scope="col">Actividad</th>
+                            <th scope="col">Fecha</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,9 +83,12 @@
                         <tr>
                             <td scope="row">{{index}}</td>
                             <td>{{usuario.Cedula}}</td>
+                            <td>{{usuario.id}}</td>
                             <td>{{usuario.Nombre}}</td>
                             <td>{{usuario.Telefono}}</td>
                             <td>{{usuario.Email}}</td>
+                            <td>{{usuario.actividad}}</td>
+                            <td>{{usuario.fecha}}</td>
                         </tr>
                         {{/each}}
                     </tbody>
